@@ -3,11 +3,11 @@
    Plugin Name: Include URL
    Plugin URI: https://devel.dob.sk/include-url
    Description: Include content of url in page
-   Version: 0.0.2
+   Version: 0.2.0
    Author: Samuel Behan
    Author URI: https://dob.sk
    Text Domain: include
-   License: GPL2
+   License: GPLv3
  */
 
 /*
@@ -15,7 +15,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * ( at your option ) any later version.
  *
  * This program is distributed in the hope that it will be useful,
