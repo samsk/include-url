@@ -2,7 +2,7 @@ include-url
 ===========
 include-url is a [Wordpress](https://wordpress.org) plugin for seamless inclusion of data from remote url, optionaly passing GET parameters to it.
 
-This way, you can 
+This way, you can create ie. simple frontend page for some internal service, that will be seamlessly incoporated in your Wordpress site, using its theme and all what wordpress provides.
 
 # Syntax
 `
