@@ -25,7 +25,7 @@ function include_url_shortcode($attrs, $content = null) {
 	// href=url
 	$href = $attrs['href'];
 	// params=param1,param2,param3
-	$query_params = $attrs['params'];
+	$params = isset($attrs['params']) ? $attrs['params'] : $attrs['param'];
 	// timeout=seconds
 	$timeout = isset($attrs['timeout']) ? $attrs['timeout'] : 10;
 	// cache=seconds
@@ -33,10 +33,12 @@ function include_url_shortcode($attrs, $content = null) {
 
 	if (!isset($href))
 		return '<b>include-url: required href parameter</b>';
+	if (!preg_match('/^https?:\//', $href))
+		return '<b>include-url: only http:// and https:// url allowed in href parameter (' . $href . ')</b>';
 
 	$cache_key = 'include-url';
 	$args = array();
-	$params = explode(',', $query_params) or array();
+	$params = explode(',', $params);
 	foreach ($params as $key) {
 		if (isset($_GET[$key]))
 			$args[$key] = urlencode($_GET[$key]);
