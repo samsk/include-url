@@ -27,7 +27,7 @@ This way, you can create ie. simple frontend page for some internal service, tha
 * Search frontend page for [SOLR](https://lucene.apache.org/solr/)
 
 `
-[include-url href="http://localhost:8080/solr/core1/select?wt=xslt&wt=results.xslt" params="q,fq" cache="15"]
+[include-url href="http://localhost:8080/solr/core1/select?wt=xslt&wt=results.xslt" params="q,fq" cache="1800"]
 `
 
-This requests data from local SOLR instance, that will return search results formated as HTML (ie. table) via its XSLT handler, optionally passing q (query) and fq (filter) params to it. Data will be cached for 15 seconds in Wordpress database.
+This requests data from local SOLR instance, that will return search results formated as HTML (ie. table) via its XSLT handler, optionally passing q (query) and fq (filter) params to it. Data will be cached for 1800 seconds in Wordpress database.

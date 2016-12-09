@@ -87,8 +87,6 @@ function include_url_shortcode($attrs, $content = null) {
 
 	return $content;
 }
-
-// register
 add_shortcode('include-url', 'include_url_shortcode');
 
 ?>
