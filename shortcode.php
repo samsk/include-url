@@ -21,7 +21,7 @@
 
 defined('ABSPATH') or exit();
 
-function include_url_shortcode($attrs, $content = null) {
+function include_url_shortcode($attrs, $msg = null) {
 	// href=url
 	$href = $attrs['href'];
 	// params=param1,param2,param3
@@ -30,11 +30,21 @@ function include_url_shortcode($attrs, $content = null) {
 	$timeout = isset($attrs['timeout']) ? $attrs['timeout'] : 10;
 	// cache=seconds
 	$cache = isset($attrs['cache']) ? $attrs['cache'] : 0;
+	// allow-file=int
+	$allow_file = isset($attrs['allow-file']) ? $attrs['allow-file'] : 0;
+	$is_file = (($allow_file != 0) && preg_match('/^file:\//', $href)) ? 1 : 0;
+	// allow-other=int
+	$allow_other = isset($attrs['allow-other']) ? $attrs['allow-other'] : 0;
 
 	if (!isset($href))
 		return '<b>include-url: required href parameter</b>';
-	if (!preg_match('/^https?:\//', $href))
-		return '<b>include-url: only http:// and https:// url allowed in href parameter (' . $href . ')</b>';
+	if (($allow_other == 0) && (!preg_match('/^https?:\//', $href) && (($allow_file == 0) || !$is_file)))
+		return '<b>include-url: only http://, https:// and file:// (if allow-file="1") are urls allowed in href parameter (' . $href . ')</b>';
+
+	// allow-file=1 - prepend document root
+	if ($is_file && $allow_file == 1) {
+		$href = preg_replace('/^file:\/\//', 'file://' . $_SERVER['DOCUMENT_ROOT'] . '/', $href);
+	}
 
 	$cache_key = 'include-url';
 	$args = array();
@@ -75,10 +85,12 @@ function include_url_shortcode($attrs, $content = null) {
 
 			curl_close($c);
 
-			if ($status['http_code'] != 200)
-				$content = false;
+			if ($status['http_code'] != 200 && !$is_file)
+				$content = $msg;
 		} else {
 			$content = file_get_contents($url);
+			if (!$content)
+				$content = $msg;
 		}
 
 		if ($cache > 0 && $content)
