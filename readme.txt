@@ -38,7 +38,7 @@ Include URL is a Wordpress plugin for seamless inclusion of data from remote url
 [include-url href="http://localhost:8080/solr/core1/select?wt=xslt&wt=results.xslt" params="q,fq" cache="1800"]
 `
 
-This requests data from local SOLR instance, that will return search results formated as HTML (ie. table) via its XSLT handler, optionally passing q (query) and fq (filter) params to it. Data will be cached for 15 seconds in Wordpress database.
+This requests data from local SOLR instance, that will return search results formated as HTML (ie. table) via its XSLT handler, optionally passing q (query) and fq (filter) params to it. Data will be cached for 1800 seconds in Wordpress database.
 
 * Read file from document_root
 
@@ -59,6 +59,10 @@ This requests data from local SOLR instance, that will return search results for
 1. Use shortcode in page or post
 
 == Changelog ==
+
+= 0.3.1 (2017-04-03) =
+
+* Fix cached content processing
 
 = 0.3.0 (2016-12-15) =
 

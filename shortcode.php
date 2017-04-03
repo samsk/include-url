@@ -94,7 +94,7 @@ function include_url_shortcode($attrs, $msg = null) {
 		}
 
 		if ($cache > 0 && $content)
-			set_transient($cache_key, 'CACHED:' . $content, $cache);
+			set_transient($cache_key, $content, $cache);
 	}
 
 	return $content;
