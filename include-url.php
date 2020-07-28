@@ -1,9 +1,9 @@
 <?php
 /*
    Plugin Name: Include URL
-   Plugin URI: https://devel.dob.sk/include-url
+   Plugin URI: https://devel.dob.sk/include-url or https://github.com/samsk/include-url
    Description: Include content of url in page
-   Version: 0.3.4
+   Version: 0.3.5
    Author: Samuel Behan
    Author URI: https://dob.sk
    Text Domain: include
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright 2016 Samuel Behan <samuel(.)behan(at)dob(.)sk>
+ * Copyright 2016-2020 Samuel Behan <samuel(.)behan(at)dob(.)sk>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

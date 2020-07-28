@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2016 Samuel Behan <samuel(.)behan(at)dob(.)sk>
+ * Copyright 2016-2020 Samuel Behan <samuel(.)behan(at)dob(.)sk>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -109,7 +109,7 @@ function include_url_shortcode($atts, $msg = null) {
 				'http' => array('timeout' => $timeout)
 			));
 
-			$content = file_get_contents($url);
+			$content = file_get_contents($url, false, $context);
 			if (!$content)
 				$content = $msg;
 		}

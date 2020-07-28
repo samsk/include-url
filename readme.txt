@@ -1,8 +1,8 @@
 === Include URL ===
 Tags: include, url
 Requires at least: 4.0
-Tested up to: 5.2.0
-Stable tag: 0.3.4
+Tested up to: 5.4.0
+Stable tag: 0.3.5
 Contributors: SamSK
 Donate link: https://devel.dob.sk/include-url
 License: GPLv3 or later
@@ -21,11 +21,11 @@ Include URL is a Wordpress plugin for seamless inclusion of data from remote url
 
 = Usage =
 
-  `[include-url href="<URL>" params="param1,param2,param3..." timeout="seconds" cache="seconds" allow-file="1"]`
+  `[include-url href="<URL>" params="param1,param2,param3..." timeout="seconds" cache="seconds" allow-file="1" allow-shortcode="1"]`
 
 * *href* - url starting with http:// or https:// (required)
 * *params* - list of comma separated GET parameters, that should be passed to include url
-* *timeout* - request timeout in seconds (honored only if CURL PHP extension is installed, default = 10 seconds)
+* *timeout* - request timeout in seconds
 * *cache* - cache request data localy in wordpress database (default = 0 seconds / disabled)
 * *allow-file* - allow file:// urls in *href* (default = 0 / disabled, 1 = prepend file with document root, 2 = use absolute path)
 * *allow-other* - allow any other protocol supported by cURL
@@ -60,6 +60,10 @@ This requests data from local SOLR instance, that will return search results for
 1. Use shortcode in page or post
 
 == Changelog ==
+
+= 0.3.5 (2020-07-28) =
+
+* Fix some undefined warnings and add timeout to file_get_contents() call (Thanks Marco Baumgartl for reporting it)
 
 = 0.3.4 (2019-05-22) =
 
