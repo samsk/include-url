@@ -16,6 +16,7 @@ This way, you can create ie. simple frontend page for some internal service, tha
 - ***cache*** - cache data for given amount of seconds in wordpress database (default = 0 / disabled)
 - ***allow-file*** - allow file:// urls in href parameter (default = 0 / disabled, 1 = prepend file with document root, 2 = use absolute path)
 - ***allow-other*** - allow any other protocol supported by cURL
+- ***allow-shortcode*** - allow and process wordpress shortcodes in included content
 
 *Note: timeout will be honored only if cURL PHP extension is present !*
 

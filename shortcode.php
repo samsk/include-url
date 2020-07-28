@@ -21,20 +21,33 @@
 
 defined('ABSPATH') or exit();
 
-function include_url_shortcode($attrs, $msg = null) {
+function include_url_shortcode($atts, $msg = null) {
+	$attrs = shortcode_atts(array(
+			'href' => null,
+			'param' => null,
+			'params' => null,
+			'timeout' => 10,
+			'cache' => 0,
+			'allow-file' => 0,
+			'allow-other' => 0,
+			'allow-shortcode' => 0,
+		), $atts, 'include-url');
+
 	// href=url
 	$href = $attrs['href'];
 	// params=param1,param2,param3
 	$params = isset($attrs['params']) ? $attrs['params'] : $attrs['param'];
 	// timeout=seconds
-	$timeout = isset($attrs['timeout']) ? $attrs['timeout'] : 10;
+	$timeout = $attrs['timeout'];
 	// cache=seconds
-	$cache = isset($attrs['cache']) ? $attrs['cache'] : 0;
+	$cache = $attrs['cache'];
 	// allow-file=int
-	$allow_file = isset($attrs['allow-file']) ? $attrs['allow-file'] : 0;
+	$allow_file = $attrs['allow-file'];
 	$is_file = (($allow_file != 0) && preg_match('/^file:\//', $href)) ? 1 : 0;
 	// allow-other=int
-	$allow_other = isset($attrs['allow-other']) ? $attrs['allow-other'] : 0;
+	$allow_other = $attrs['allow-other'];
+	// allow-shortcode=int
+	$allow_shortcode = $attrs['allow-shortcode'];
 
 	if (!isset($href))
 		return '<b>include-url: required href parameter</b>';
@@ -92,6 +105,9 @@ function include_url_shortcode($attrs, $msg = null) {
 			if (!$content)
 				$content = $msg;
 		}
+
+		if ($allow_shortcode)
+			$content = do_shortcode($content);
 
 		if ($cache > 0 && $content)
 			set_transient($cache_key, $content, $cache);

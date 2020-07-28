@@ -1,8 +1,8 @@
 === Include URL ===
 Tags: include, url
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 0.3.0
+Tested up to: 5.2.0
+Stable tag: 0.3.4
 Contributors: SamSK
 Donate link: https://devel.dob.sk/include-url
 License: GPLv3 or later
@@ -29,6 +29,7 @@ Include URL is a Wordpress plugin for seamless inclusion of data from remote url
 * *cache* - cache request data localy in wordpress database (default = 0 seconds / disabled)
 * *allow-file* - allow file:// urls in *href* (default = 0 / disabled, 1 = prepend file with document root, 2 = use absolute path)
 * *allow-other* - allow any other protocol supported by cURL
+* *allow-shortcode* - allow and process wordpress shortcodes in included content
 
 = Examples =
 
@@ -59,6 +60,14 @@ This requests data from local SOLR instance, that will return search results for
 1. Use shortcode in page or post
 
 == Changelog ==
+
+= 0.3.4 (2019-05-22) =
+
+* Improve shortcode attributes processing
+
+= 0.3.2 (2018-05-17) =
+
+* Add allow-shortcode option
 
 = 0.3.1 (2017-04-03) =
 

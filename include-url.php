@@ -3,7 +3,7 @@
    Plugin Name: Include URL
    Plugin URI: https://devel.dob.sk/include-url
    Description: Include content of url in page
-   Version: 0.3.0
+   Version: 0.3.4
    Author: Samuel Behan
    Author URI: https://dob.sk
    Text Domain: include
