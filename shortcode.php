@@ -63,9 +63,13 @@ function include_url_shortcode($atts, $msg = null) {
 	$args = array();
 	$params = explode(',', $params);
 	foreach ($params as $key) {
-		if (isset($_GET[$key]))
-			$args[$key] = urlencode($_GET[$key]);
-		$cache_key .= ':' . $_GET[$key];
+		$cache_key .= ':';
+
+		if (!isset($_GET[$key]))
+			continue;
+
+		$args[$key] = urlencode($_GET[$key]);
+		$cache_key .= $_GET[$key];
 	}
 
 	// build url
@@ -101,6 +105,10 @@ function include_url_shortcode($atts, $msg = null) {
 			if ($status['http_code'] != 200 && !$is_file)
 				$content = $msg;
 		} else {
+			$context = stream_context_create(array(
+				'http' => array('timeout' => $timeout)
+			));
+
 			$content = file_get_contents($url);
 			if (!$content)
 				$content = $msg;
